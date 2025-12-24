@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JQuerylab</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Phone Book</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- jQuery Mobile CDN -->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"
+    />
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="scripts/script.js"></script>
+  </head>
+
+  <body>
+    <div data-role="page" id="contactListPage">
+      <div data-role="header">
+        <h1>Contact List</h1>
+        <a href="#contactFormPage" data-icon="plus" class="ui-btn-left">
+          Add
+        </a>
+      </div>
+
+      <div data-role="content">
+        <ul data-role="listview" data-inset="true" id="contactList"></ul>
+      </div>
+
+      <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+        <h1>Contact List</h1>
+      </div>
+    </div>
+  </body>
 </html>
