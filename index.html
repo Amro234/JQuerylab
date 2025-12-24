@@ -3,38 +3,112 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Phone Book</title>
-
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <!-- jQuery Mobile CDN -->
+    <title>Contact List App</title>
+    <!-- jQuery Mobile CDN CSS -->
     <link
       rel="stylesheet"
       href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"
     />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- jQuery Mobile CDN -->
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
     <!-- Custom JS -->
     <script src="scripts/script.js"></script>
   </head>
-
   <body>
-    <div data-role="page" id="contactListPage">
+    <div data-role="page" id="home">
       <div data-role="header">
         <h1>Contact List</h1>
-        <a href="#contactFormPage" data-icon="plus" class="ui-btn-left">
-          Add
-        </a>
+        <a href="#add" data-icon="plus" class="ui-btn-right">Add</a>
       </div>
 
       <div data-role="content">
-        <ul data-role="listview" data-inset="true" id="contactList"></ul>
+        <input type="search" id="search" placeholder="Filter items..." />
+
+        <ul
+          data-role="listview"
+          data-filter="true"
+          data-input="#search"
+          id="contactList"
+          style="margin-top: 15px"
+        ></ul>
       </div>
 
       <div data-role="footer" data-position="fixed" data-tap-toggle="false">
         <h1>Contact List</h1>
+      </div>
+    </div>
+
+    <div data-role="page" id="view">
+      <div data-role="header">
+        <a href="#home" data-icon="back">Back</a>
+        <h1 id="viewName"></h1>
+      </div>
+
+      <div data-role="content" style="text-align: center">
+        <img id="viewImg" width="120" />
+        <p id="viewPhone"></p>
+        <p id="viewEmail"></p>
+
+        <a id="callBtn" data-role="button" data-icon="phone">Call</a>
+        <a href="#add" id="editBtn" data-role="button" data-icon="edit">
+          Edit
+        </a>
+        <a
+          href="#deleteDialog"
+          data-role="button"
+          data-icon="delete"
+          data-rel="dialog"
+          >Delete</a
+        >
+      </div>
+    </div>
+
+    <div data-role="page" id="add">
+      <div data-role="header">
+        <a href="#home" data-icon="back">Back</a>
+        <h1>New Contact</h1>
+      </div>
+
+      <div data-role="content">
+        <form id="contactForm">
+          <input type="hidden" id="contactId" />
+
+          <label>Name</label>
+          <input type="text" id="name" required />
+
+          <label>Phone</label>
+          <input type="tel" id="phone" pattern="[0-9]{10,11}" required />
+
+          <label>Email</label>
+          <input type="email" id="email" />
+
+          <label>Gender</label>
+          <fieldset data-role="controlgroup" data-type="horizontal">
+            <input type="radio" name="gender" id="female" value="female" />
+            <label for="female">Female</label>
+
+            <input type="radio" name="gender" id="male" value="male" />
+            <label for="male">Male</label>
+          </fieldset>
+
+          <button type="submit" data-icon="check">Save</button>
+          <a href="#home" data-role="button" data-icon="delete">Cancel</a>
+        </form>
+      </div>
+    </div>
+
+    <div data-role="page" id="deleteDialog">
+      <div data-role="header">
+        <h1>Delete Contact?</h1>
+      </div>
+
+      <div data-role="content" style="text-align: center">
+        <a href="#" id="confirmDelete" data-role="button" data-icon="check"
+          >Delete</a
+        >
+        <a href="#view" data-role="button" data-icon="delete">Cancel</a>
       </div>
     </div>
   </body>
